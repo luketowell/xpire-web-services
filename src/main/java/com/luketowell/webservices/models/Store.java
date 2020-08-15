@@ -2,8 +2,10 @@ package com.luketowell.webservices.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="store")
 public class Store {
 
     @Id

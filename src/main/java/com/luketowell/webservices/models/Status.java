@@ -3,8 +3,10 @@ package com.luketowell.webservices.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="status")
 public class Status {
 
     @Id
