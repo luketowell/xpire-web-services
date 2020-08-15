@@ -20,7 +20,7 @@ public class StoreItem {
     private Item item;
 
     @Column(name="store_id")
-    private String store_id;
+    private String storeId;
 
     @OneToMany(mappedBy = "store_item_id")
     private Set<StoreItemAction> actions;
@@ -31,6 +31,6 @@ public class StoreItem {
     public StoreItem(Long id, Item item, String store_id) {
         this.id = id;
         this.item = item;
-        this.store_id = store_id;
+        this.storeId = store_id;
     }
 }
