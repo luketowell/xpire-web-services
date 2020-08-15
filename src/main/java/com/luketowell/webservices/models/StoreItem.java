@@ -15,8 +15,9 @@ public class StoreItem {
     @Column(name="id")
     private Long id;
 
-    @Column(name="item_upc")
-    private String item_upc;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="item_upc")
+    private Item item;
 
     @Column(name="store_id")
     private String store_id;
@@ -24,9 +25,9 @@ public class StoreItem {
     public StoreItem() {
     }
 
-    public StoreItem(Long id, String item_upc, String store_id) {
+    public StoreItem(Long id, Item item, String store_id) {
         this.id = id;
-        this.item_upc = item_upc;
+        this.item = item;
         this.store_id = store_id;
     }
 }
