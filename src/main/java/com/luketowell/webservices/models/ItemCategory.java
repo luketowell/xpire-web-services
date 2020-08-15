@@ -1,14 +1,22 @@
 package com.luketowell.webservices.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
+@Table(name="item_category")
 public class ItemCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
+
+    @Column(name="name")
     private String name;
+
+    @OneToMany(mappedBy = "category")
+    private Set<Item> items;
 
     public ItemCategory() {
     }
