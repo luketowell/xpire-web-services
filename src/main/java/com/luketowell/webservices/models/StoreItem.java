@@ -18,7 +18,7 @@ public class StoreItem {
     @Column(name="item_upc")
     private String item_upc;
 
-    @Column(store_id)
+    @Column(name="store_id")
     private String store_id;
 
     public StoreItem() {
