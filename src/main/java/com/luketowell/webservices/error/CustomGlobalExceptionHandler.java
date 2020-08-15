@@ -11,7 +11,7 @@ import java.io.IOException;
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({CategoryNotFoundException.class, StoreNotFoundException.class, StatusNotFoundException.class})
+    @ExceptionHandler({CategoryNotFoundException.class, StoreNotFoundException.class, StatusNotFoundException.class, StoreItemNotFoundException.class, ItemNotFoundException.class})
     public void springHandleNotFound(HttpServletResponse response) throws IOException {
         response.sendError(HttpStatus.NOT_FOUND.value());
     }
