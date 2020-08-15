@@ -25,7 +25,6 @@ public class ItemController {
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public Item insertNewItem(@RequestBody Item item){
-        System.out.println(item.toString());
        return itemRepository.save(item);
     }
 }

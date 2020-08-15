@@ -1,5 +1,6 @@
 package com.luketowell.webservices.controllers;
 
+import com.luketowell.webservices.error.StoreItemNotFoundException;
 import com.luketowell.webservices.models.StoreItem;
 import com.luketowell.webservices.repositories.StoreItemRepository;
 import org.springframework.http.HttpStatus;
@@ -19,4 +20,11 @@ public class StoreItemController {
     public Iterable<StoreItem> getAllStoreItems() {
         return storeItemRepository.findAll();
     }
+
+    @GetMapping("/{id}")
+    public StoreItem findStoreItemById(@PathVariable Long id){
+        return storeItemRepository.findById(id)
+                .orElseThrow(() -> new StoreItemNotFoundException(id));
+    }
+
 }
