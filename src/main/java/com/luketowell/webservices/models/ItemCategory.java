@@ -15,15 +15,27 @@ public class ItemCategory {
     @Column(name="name")
     private String name;
 
+    @Column(name="image_url")
+    private String image_url;
+
     @OneToMany(mappedBy = "category")
     private Set<Item> items;
 
     public ItemCategory() {
     }
 
-    public ItemCategory(Long id, String name) {
+    public ItemCategory(Long id, String name, String image_url) {
         this.id = id;
         this.name = name;
+        this.image_url = image_url;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
     public Long getId() {
