@@ -15,17 +15,26 @@ public class StoreItem {
     @Column(name="id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="item_upc")
-    private Item item;
+    @Column(name="item_upc", updatable = false, insertable = false)
+    private Long item_upc;
 
     @Column(name="store_id")
     private String storeId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="item_upc")
+    private Item item;
 
     @OneToMany(mappedBy = "store_item_id")
     private Set<StoreItemAction> actions;
 
     public StoreItem() {
+    }
+
+    public StoreItem(Long id, Long item_upc, String storeId) {
+        this.id = id;
+        this.item_upc = item_upc;
+        this.storeId = storeId;
     }
 
     public StoreItem(Long id, Item item, String store_id) {
