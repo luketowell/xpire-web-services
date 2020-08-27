@@ -28,8 +28,8 @@ public class StoreItemAction {
     @Column(name="expired_count")
     private Long expired_count;
 
-    @Column(name="update_date")
-    private Date update_date;
+    @Column(name="created_date")
+    private Date created_date;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="status_id", insertable = false, updatable = false)
@@ -38,21 +38,21 @@ public class StoreItemAction {
     public StoreItemAction() {
     }
 
-    public StoreItemAction(Long id, Long store_item_id, String user_id, String status_id, Long expired_count, Date update_date) {
+    public StoreItemAction(Long id, Long store_item_id, String user_id, String status_id, Long expired_count, Date created_date) {
         this.id = id;
         this.store_item_id = store_item_id;
         this.user_id = user_id;
         this.status_id = status_id;
         this.expired_count = expired_count;
-        this.update_date = update_date;
+        this.created_date = created_date;
     }
 
-    public StoreItemAction(Long id, Long store_item_id, String user_id, Status status, Long expired_count, Date update_date) {
+    public StoreItemAction(Long id, Long store_item_id, String user_id, Status status, Long expired_count, Date created_date) {
         this.id = id;
         this.store_item_id = store_item_id;
         this.user_id = user_id;
         this.status = status;
         this.expired_count = expired_count;
-        this.update_date = update_date;
+        this.created_date = created_date;
     }
 }
