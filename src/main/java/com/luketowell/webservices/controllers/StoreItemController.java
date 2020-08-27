@@ -48,6 +48,11 @@ public class StoreItemController {
         storeItem.setActions(body.getActions());
 
         return storeItemRepository.save(storeItem);
+    }
 
+    @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)
+    public StoreItem addStoreItem(@RequestBody StoreItem body){
+        return storeItemRepository.save(body);
     }
 }
