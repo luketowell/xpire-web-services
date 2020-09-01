@@ -22,4 +22,10 @@ public class StoreItemSummaryController {
             (@PathVariable String storeId, @PathVariable Long categoryId) {
         return storeItemSummaryRepository.getStoreItemsByCategoryAndStoreId( categoryId,storeId);
     }
+
+    @GetMapping("findItem/{storeId}/{itemUpc}")
+    public List<StoreItemSummary> findAllItemsForStoreByCategory
+            (@PathVariable String storeId, @PathVariable String itemUpc) {
+        return storeItemSummaryRepository.getStoreItemsByItemUpcAndStoreId( itemUpc,storeId);
+    }
 }

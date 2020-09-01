@@ -13,4 +13,6 @@ import java.util.List;
 public interface StoreItemSummaryRepository extends JpaRepository<StoreItemSummary, Long> {
 
     List<StoreItemSummary> getStoreItemsByCategoryAndStoreId(@Param("categoryId") Long categoryId, @Param("storeId") String storeId);
+
+    List<StoreItemSummary> getStoreItemsByItemUpcAndStoreId(@Param("itemUpc") String itemUpc, @Param("storeId") String storeId );
 }

@@ -3,6 +3,7 @@ package com.luketowell.webservices.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -18,15 +19,23 @@ import javax.persistence.*;
                                 @ColumnResult(name = "name"),
                                 @ColumnResult(name = "category_id"),
                                 @ColumnResult(name = "img_url"),
+                                @ColumnResult(name = "expiry_date")
                         }
                 )
         }
 )
-@NamedNativeQuery(name = "StoreItemSummary.getStoreItemsByCategoryAndStoreId", query = "SELECT si.id, si.item_upc, si.store_id, i.name, i.category_id, i.img_url " +
+@NamedNativeQuery(name = "StoreItemSummary.getStoreItemsByCategoryAndStoreId", query = "SELECT si.id, si.item_upc, si.store_id, i.name, i.category_id, i.img_url, si.expiry_date " +
         "FROM store_item si " +
         "INNER JOIN item i " +
         "ON si.item_upc = i.upc " +
         "WHERE i.category_id = :categoryId AND si.store_id =:storeId", resultSetMapping = "storeItemCategoryMapping")
+
+@NamedNativeQuery(name = "StoreItemSummary.getStoreItemsByItemUpcAndStoreId", query = "SELECT si.id, si.item_upc, si.store_id, i.name, i.category_id, i.img_url, si.expiry_date " +
+        "FROM store_item si " +
+        "INNER JOIN item i " +
+        "ON si.item_upc = i.upc " +
+        "WHERE si.item_upc = :itemUpc AND si.store_id =:storeId " +
+        "ORDER BY si.expiry_date ASC", resultSetMapping = "storeItemCategoryMapping")
 public class StoreItemSummary {
 
     @Id
@@ -36,16 +45,18 @@ public class StoreItemSummary {
     private String name;
     private Integer category_id;
     private String img_url;
+    private Date expiry_date;
 
     public StoreItemSummary() {
     }
 
-    public StoreItemSummary(Integer id, String item_upc, String store_id, String name, Integer category_id, String img_url) {
+    public StoreItemSummary(Integer id, String item_upc, String store_id, String name, Integer category_id, String img_url, Date expiry_date) {
         this.id = id;
         this.item_upc = item_upc;
         this.store_id = store_id;
         this.name = name;
         this.category_id = category_id;
         this.img_url = img_url;
+        this.expiry_date = expiry_date;
     }
 }
