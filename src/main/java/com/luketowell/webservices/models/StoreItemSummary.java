@@ -36,6 +36,12 @@ import java.util.Date;
         "ON si.item_upc = i.upc " +
         "WHERE si.item_upc = :itemUpc AND si.store_id =:storeId " +
         "ORDER BY si.expiry_date ASC", resultSetMapping = "storeItemCategoryMapping")
+
+@NamedNativeQuery(name = "StoreItemSummary.getStoreItemsByCategoryAndStoreIdAndExpiryDate", query = "SELECT si.id, si.item_upc, si.store_id, i.name, i.category_id, i.img_url, si.expiry_date " +
+        "FROM store_item si " +
+        "INNER JOIN item i " +
+        "ON si.item_upc = i.upc " +
+        "WHERE i.category_id = :categoryId AND si.store_id =:storeId AND si.expiry_date = :expiryDate", resultSetMapping = "storeItemCategoryMapping")
 public class StoreItemSummary {
 
     @Id
